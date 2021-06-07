@@ -27,8 +27,11 @@
 
 Если дополнительные задачи сделаны, то необходимо об этом упомянуть в readme.md и предоставить примеры запросов.
 
-# Как запустить микросервис из исходников:
+# Сборка, запуск, примеры использования:
 Сборка и установка образа в локальный репозиторий:
-mvn org.springframework.boot:spring-boot-maven-plugin:2.5.0:build-image
+mvn org.springframework.boot:spring-boot-maven-plugin:2.5.0:build-image<br/>
 Старт образа:
-docker run -it -p8080:8080 holiday-unstable-service:0.0.1-SNAPSHOT
+docker run -it -p8080:8080 holiday-unstable-service:0.0.1-SNAPSHOT<br/>
+curl GET http://localhost:8080/isHoliday/01-02-2000 - проверка даты на выходной,
+1 если выходной, 0 в противном случае<br/>
+curl GET http://localhost:8080/actuator/health - health check, возвращает статус сервера, если UP, то все хорошо

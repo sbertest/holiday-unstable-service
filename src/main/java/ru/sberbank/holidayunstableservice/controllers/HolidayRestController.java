@@ -22,13 +22,14 @@ public class HolidayRestController {
     private static final int SLEEP_TIME_BOUND = 1000;
     private static final int FAIL_CHANCE = 20;
     private static final int HOLIDAY_CHANCE = 5;
+    private static final Health HEALTH_UP = Health.up().build();
 
     @Autowired
     private CustomHealthIndicator customHealthIndicator;
     private final Random random = new Random();
 
     private void emulateLongWork() {
-        if (!Health.up().equals(customHealthIndicator.health())) {
+        if (!HEALTH_UP.equals(customHealthIndicator.health())) {
             log.info("Health check is not up");
             throw new RuntimeException("fail");
         }
